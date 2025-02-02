@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>com.murlodin.fca-plugin</id>
+    <name>FCA. Flutter Clean Architecture Feature</name>
+
+    <vendor email="" url="https://www.murlodin.com">Murlodin</vendor>
+    <description><![CDATA[Android Studio plugin for make flutter clean architecture feature]]></description>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable parentId="tools" instance="com.murlodin.fcaplugin.settings.FCASettingsConfigurable"
+                                 id="com.murlodin.fcaplugin.settings.FCASettingsConfigurable"
+                                 displayName="FCA Settings "/>
+    </extensions>
+
+    <actions>
+        <action id="com.murlodin.fcaplugin.actions.FCAAction"
+            class="com.murlodin.fcaplugin.actions.FCAAction"
+            text="Add FCA Feature"
+            description="Action for create fca feature"
+            icon="icons/action_icon.svg"
+        >
+            <add-to-group group-id="NewGroup" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

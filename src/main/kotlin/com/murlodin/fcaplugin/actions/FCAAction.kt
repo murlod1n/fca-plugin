@@ -28,7 +28,7 @@ class FCAAction : AnAction() {
                 project,
                 selected,
                 featureName
-            );
+            )
         }
 
     }

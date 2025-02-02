@@ -19,7 +19,7 @@ class FCAGenerator {
     ): Boolean {
         try {
 
-            val featureName = featureNameInput.lowercase();
+            val featureName = featureNameInput.lowercase()
 
             val featureFolder = folder.createChildDirectory(this, featureName)
 
@@ -36,15 +36,15 @@ class FCAGenerator {
             }
             if(fcaSettings.isCreateDataMapperTemplates) {
                 val dataMapperFolder = dataFolder.createChildDirectory(this, fcaSettings.dataMappersFolderName ?:  FCASettingsState.DATA_MAPPER_FOLDER_NAME)
-                dataMapperFolder.createChildData(this, "${featureName}_dto_mapper.dart");
+                dataMapperFolder.createChildData(this, "${featureName}_dto_mapper.dart")
             }
 
             val domainFolder = featureFolder.createChildDirectory(this, "domain")
             val domainRepositoryFolder = domainFolder.createChildDirectory(this, fcaSettings.domainRepositoriesFolderName ?:  FCASettingsState.DOMAIN_REPOSITORY_FOLDER_NAME)
             val domainRepositoryFile = domainRepositoryFolder.createChildData(this, "${featureName}_repository.dart")
             domainRepositoryFile.writeText(Templates.REPOSITORY_TEMPLATE.replace("{capitalize_name}", featureName.capitalize()))
-            domainFolder.createChildDirectory(this, fcaSettings.domainModelsFolderName ?:  FCASettingsState.DOMAIN_MODELS_FOLDER_NAME);
-            domainFolder.createChildDirectory(this, fcaSettings.domainUseCasesFolderName ?: FCASettingsState.DOMAIN_USE_CASE_FOLDER_NAME);
+            domainFolder.createChildDirectory(this, fcaSettings.domainModelsFolderName ?:  FCASettingsState.DOMAIN_MODELS_FOLDER_NAME)
+            domainFolder.createChildDirectory(this, fcaSettings.domainUseCasesFolderName ?: FCASettingsState.DOMAIN_USE_CASE_FOLDER_NAME)
 
             val presentationFolder = featureFolder.createChildDirectory(this, "presentation")
             if (fcaSettings.isCreatePresentationBlocTemplates) {

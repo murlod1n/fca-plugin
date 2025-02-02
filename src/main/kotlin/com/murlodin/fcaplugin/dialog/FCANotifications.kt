@@ -11,7 +11,7 @@ class FCANotifications {
             Notifications.Bus.notify(
                 Notification(
                     "FCAGenerator",
-                    "Clean Architecture Feature Generator Error",
+                    "FCA Error",
                     content,
                     NotificationType.ERROR
                 ), project

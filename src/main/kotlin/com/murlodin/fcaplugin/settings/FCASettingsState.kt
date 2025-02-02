@@ -24,8 +24,8 @@ class FCASettingsState : BaseState() {
     var presentationWidgetsFolderName by string(PRESENTATION_WIDGET_FOLDER_NAME)
 
     companion object DefaultFCASettingsProperties {
-        const val IS_CREATE_DATA_MAPPER_FOLDER = false;
-        const val IS_CREATE_DATA_MODELS_FOLDER = false;
+        const val IS_CREATE_DATA_MAPPER_FOLDER = false
+        const val IS_CREATE_DATA_MODELS_FOLDER = false
         const val DATA_MODELS_FOLDER_NAME = "models"
         const val DATA_REPOSITORY_FOLDER_NAME = "repositories"
         const val DATA_SOURCE_FOLDER_NAME = "data_sources"
@@ -35,8 +35,8 @@ class FCASettingsState : BaseState() {
         const val DOMAIN_REPOSITORY_FOLDER_NAME = "repositories"
         const val DOMAIN_USE_CASE_FOLDER_NAME = "use_cases"
 
-        const val IS_CREATE_PRESENTATION_BLOC_FOLDER = false;
-        const val IS_CREATE_PRESENTATION_WIDGET_FOLDER = true;
+        const val IS_CREATE_PRESENTATION_BLOC_FOLDER = false
+        const val IS_CREATE_PRESENTATION_WIDGET_FOLDER = true
         const val PRESENTATION_BLOC_FOLDER_NAME = "bloc"
         const val PRESENTATION_STATE_FOLDER_NAME = "state"
         const val PRESENTATION_PAGE_FOLDER_NAME = "pages"

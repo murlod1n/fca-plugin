@@ -21,7 +21,7 @@ class FCADialogWrapper(private val action: AnActionEvent) : DialogWrapper(action
         return name
     }
 
-    override fun createCenterPanel(): JComponent? {
+    override fun createCenterPanel(): JComponent {
 
         val selected = PlatformDataKeys.VIRTUAL_FILE.getData(action.dataContext)
 

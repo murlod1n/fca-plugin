@@ -12,7 +12,7 @@ class FCAAction : AnAction() {
         val dialog = FCADialogWrapper(actionEvent)
 
         if (dialog.showAndGet()) {
-            val featureName = dialog.getFeatureName()
+            val featureName = dialog.getNameTextFieldValue()
 
             generateFeature(actionEvent.dataContext, featureName)
         }

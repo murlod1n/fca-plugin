@@ -32,7 +32,6 @@ internal class FCASettingsConfigurable(project: Project) :
     override fun createPanel(): DialogPanel {
 
         val textValidator: ValidationInfoBuilder.(JBTextField) -> ValidationInfo? = { textField ->
-            println(textField.text)
             if (textField.text.isNullOrBlank()) {
                 error("Поле не может быть пустым")
             } else {
@@ -217,7 +216,6 @@ internal class FCASettingsConfigurable(project: Project) :
     }
 
     override fun apply() {
-        println("apply")
         if(
             dataSourcesFolderNameTextField.component.text.isNullOrBlank() ||
             dataModelsFolderNameTextField.component.text.isNullOrBlank() ||

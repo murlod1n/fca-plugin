@@ -5,32 +5,32 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.ui.components.JBTextField
+import com.intellij.ui.dsl.builder.Cell
 import com.intellij.ui.dsl.builder.panel
 import com.intellij.ui.layout.ValidationInfoBuilder
 import javax.swing.JComponent
 
 class FCADialogWrapper(private val action: AnActionEvent) : DialogWrapper(action.project) {
 
-    private var name: String = ""
+    private lateinit var nameTextField: Cell<JBTextField>
 
     init {
+        title = "Create FCA Feature"
         super.init()
     }
 
-    fun getFeatureName(): String {
-        return name
-    }
+    fun getNameTextFieldValue() : String = nameTextField.component.text
 
     override fun createCenterPanel(): JComponent {
 
-        val selected = PlatformDataKeys.VIRTUAL_FILE.getData(action.dataContext)
+        val selectedFolder = PlatformDataKeys.VIRTUAL_FILE.getData(action.dataContext)
 
         val nameValidator: ValidationInfoBuilder.(JBTextField) -> ValidationInfo? = {
 
             var isSameName = false
 
-            if (selected != null) {
-                for(child in selected.children) {
+            if (selectedFolder != null) {
+                for(child in selectedFolder.children) {
                     if (it.text == child.name && child.isDirectory) {
                         isSameName = true
                         break
@@ -50,14 +50,11 @@ class FCADialogWrapper(private val action: AnActionEvent) : DialogWrapper(action
                 label("Feature name")
             }
             row {
-                textField()
+                nameTextField = textField()
                     .focused()
                     .validationOnApply(
                         nameValidator
                     )
-                    .onChanged {
-                        name = it.text
-                    }
             }
         }
     }

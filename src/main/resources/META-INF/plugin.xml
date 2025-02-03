@@ -5,7 +5,6 @@
     <vendor email="" url="https://www.murlodin.com">Murlodin</vendor>
     <description><![CDATA[Android Studio plugin for make flutter clean architecture feature]]></description>
     <depends>com.intellij.modules.platform</depends>
-    <depends>org.jetbrains.android</depends>
     <depends>com.intellij.modules.androidstudio</depends>
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable parentId="tools" instance="com.murlodin.fcaplugin.settings.FCASettingsConfigurable"

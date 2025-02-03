@@ -4,7 +4,6 @@ import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.SimplePersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
-import com.intellij.openapi.project.Project
 
 
 @Service(Service.Level.PROJECT)
@@ -12,7 +11,7 @@ import com.intellij.openapi.project.Project
     name = "com.murlodin.fcapluginFCASettings",
     storages = [Storage("FCASettingsPlugin.xml")],
 )
-class FCASettings(internal val project: Project) :
+class FCASettings :
     SimplePersistentStateComponent<FCASettingsState>(FCASettingsState()) {
 
     override fun noStateLoaded() {

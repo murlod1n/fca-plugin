@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.murlodin"
-version = "1.0.0"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -19,7 +19,8 @@ intellijPlatform {
     pluginConfiguration {
         name = "FCA"
         id="com.murlodin.fca-plugin"
-
+        ideaVersion.sinceBuild.set(project.property("sinceBuild").toString())
+        ideaVersion.untilBuild.set(provider { null })
     }
 
     publishing {

@@ -19,7 +19,8 @@ class FCAGenerator {
     ): Boolean {
         try {
 
-            val featureName = featureNameInput.lowercase()
+            val featureName = featureNameInput.replace("(\\s+)".toRegex(), "_").replace("(\\W+)".toRegex(), "").lowercase()
+            val capitalizeFeatureName = featureNameInput.replace("(\\s+|\\W+|_)".toRegex(), " ").split(" ").joinToString(separator = "") { it.capitalize() }
 
             val featureFolder = folder.createChildDirectory(this, featureName)
 
@@ -30,7 +31,7 @@ class FCAGenerator {
             dataFolder.createChildDirectory(this, fcaSettings.dataSourcesFolderName ?: FCASettingsState.DATA_SOURCE_FOLDER_NAME)
             val dataRepositoryFolder = dataFolder.createChildDirectory(this, fcaSettings.dataRepositoriesFolderName ?: FCASettingsState.DATA_REPOSITORY_FOLDER_NAME)
             val repositoryImplFile = dataRepositoryFolder.createChildData(this, "${featureName}_repository_impl.dart")
-            repositoryImplFile.writeText(Templates.REPOSITORY_IMPL_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", featureName.capitalize()))
+            repositoryImplFile.writeText(Templates.REPOSITORY_IMPL_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", capitalizeFeatureName))
             if(fcaSettings.isCreateDataModelsTemplates) {
                 dataFolder.createChildDirectory(this, fcaSettings.dataModelsFolderName ?:  FCASettingsState.DATA_MODELS_FOLDER_NAME)
             }
@@ -42,7 +43,7 @@ class FCAGenerator {
             val domainFolder = featureFolder.createChildDirectory(this, "domain")
             val domainRepositoryFolder = domainFolder.createChildDirectory(this, fcaSettings.domainRepositoriesFolderName ?:  FCASettingsState.DOMAIN_REPOSITORY_FOLDER_NAME)
             val domainRepositoryFile = domainRepositoryFolder.createChildData(this, "${featureName}_repository.dart")
-            domainRepositoryFile.writeText(Templates.REPOSITORY_TEMPLATE.replace("{capitalize_name}", featureName.capitalize()))
+            domainRepositoryFile.writeText(Templates.REPOSITORY_TEMPLATE.replace("{capitalize_name}", capitalizeFeatureName))
             domainFolder.createChildDirectory(this, fcaSettings.domainModelsFolderName ?:  FCASettingsState.DOMAIN_MODELS_FOLDER_NAME)
             domainFolder.createChildDirectory(this, fcaSettings.domainUseCasesFolderName ?: FCASettingsState.DOMAIN_USE_CASE_FOLDER_NAME)
 
@@ -52,9 +53,9 @@ class FCAGenerator {
                 val blocFile = blocFolder.createChildData(this, "${featureName}_bloc.dart")
                 val blocEventFile = blocFolder.createChildData(this, "${featureName}_event.dart")
                 val blocStateFile = blocFolder.createChildData(this, "${featureName}_state.dart")
-                blocFile.writeText( Templates.BLOC_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", featureName.capitalize()))
-                blocEventFile.writeText( Templates.BLOC_EVENT_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", featureName.capitalize()))
-                blocStateFile.writeText( Templates.BLOC_STATE_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", featureName.capitalize()))
+                blocFile.writeText( Templates.BLOC_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", capitalizeFeatureName))
+                blocEventFile.writeText( Templates.BLOC_EVENT_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", capitalizeFeatureName))
+                blocStateFile.writeText( Templates.BLOC_STATE_TEMPLATE.replace("{name}", featureName).replace("{capitalize_name}", capitalizeFeatureName))
             } else {
                 presentationFolder.createChildDirectory(this, fcaSettings.presentationStateFolderName ?: FCASettingsState.PRESENTATION_STATE_FOLDER_NAME)
             }

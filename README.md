@@ -1,6 +1,8 @@
 # FCA - Flutter Clean Architecture
 A plugin for <b>Android Studio</b> that allows you to create a folder structure for a <b>Flutter Clean Architecture Clear Feature</b>
 
+### Links
+[FCA Plugin in JetBrains Marketplace](#https://plugins.jetbrains.com/plugin/26454-fca)
 
 ### Feature tree
 One possible data structure might look like this:
@@ -32,4 +34,4 @@ You can disable and rename folders.
 ### Create New Feature
 To create a feature, just right-click on the desired folder and select the `New` menu item and select `Add FCA Feature`
 
-![Plugin Settings!](/assets/images/add_feature.png)
+![Add feature!](/assets/images/add_feature.png)

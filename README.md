@@ -2,7 +2,7 @@
 A plugin for <b>Android Studio</b> that allows you to create a folder structure for a <b>Flutter Clean Architecture Clear Feature</b>
 
 ### Links
-[FCA Plugin in JetBrains Marketplace](#https://plugins.jetbrains.com/plugin/26454-fca)
+[FCA Plugin in JetBrains Marketplace](https://plugins.jetbrains.com/plugin/26454-fca)
 
 ### Feature tree
 One possible data structure might look like this:
